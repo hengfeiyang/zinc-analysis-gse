@@ -27,7 +27,7 @@ Go efficient multilingual NLP and text segmentation; support english, chinese, j
 ### 1. build as go module
 
 ```shell
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -buildmode=plugin -o gse_analyzer.so
+GOOS=linux GOARCH=amd64 go build -buildmode=plugin -o gse_analyzer.so
 ```
 
 ### 2. install to zinc plugin
