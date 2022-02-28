@@ -13,11 +13,13 @@ func main() {
 	tokens2 := analysis.Analyzer["gse_search"].Analyze([]byte(text))
 	fmt.Println(tokens2)
 
-	// new.LoadStop("stop.txt")
-	seg.AddStop("是") //加了这行也没用
+	// Cut
 	fmt.Println("cut: ", seg.Cut(text, true))
 	fmt.Println("cut all: ", seg.CutAll(text))
 	fmt.Println("cut for search: ", seg.CutSearch(text, true))
+	fmt.Println(seg.String(text, true))
+
+	// Segment
 	segment1 := seg.Segment([]byte(text))
 	fmt.Println("cut for Segment: ")
 	for _, word := range segment1 {
@@ -28,5 +30,4 @@ func main() {
 	for _, word := range segment2 {
 		fmt.Println(string(word.Token().Text()))
 	}
-	fmt.Println(seg.String(text, true))
 }
