@@ -6,7 +6,6 @@ import (
 
 	"github.com/prabhatsharma/zinc/pkg/plugin"
 	zincanalysis "github.com/prabhatsharma/zinc/pkg/plugin/analysis"
-	"github.com/prabhatsharma/zinc/pkg/zutils"
 
 	"github.com/hengfeiyang/gse-zinc-plugin/analyzer"
 	"github.com/hengfeiyang/gse-zinc-plugin/token"
@@ -39,19 +38,19 @@ func init() {
 	seg.LoadDictEmbed("zh_s")
 	seg.LoadStopEmbed()
 	seg.Load = true
-	seg.SkipLog = false
+	seg.SkipLog = true
 
-	dataPath := zutils.GetEnv("ZINC_PLUGIN_PATH", "./plugins")
+	dataPath := GetEnv("ZINC_PLUGIN_PATH", "./plugins")
 	dataPath += "/" + ZINC_PLUGIN_NAME + "/"
-	if ok, _ := zutils.IsExist(dataPath); !ok {
+	if ok, _ := IsExist(dataPath); !ok {
 		dataPath = "./data/"
 	}
 	userDict := dataPath + "dict/zh/user.txt"
-	if ok, _ := zutils.IsExist(userDict); ok {
+	if ok, _ := IsExist(userDict); ok {
 		seg.LoadDict(userDict)
 	}
 	stopDict := dataPath + "dict/zh/stop.txt"
-	if ok, _ := zutils.IsExist(stopDict); ok {
+	if ok, _ := IsExist(stopDict); ok {
 		seg.LoadStop(stopDict)
 	}
 }
